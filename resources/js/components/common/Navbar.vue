@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { LogOut, Moon, Settings, User } from 'lucide-vue-next';
+import { LogOut, Settings, User } from 'lucide-vue-next';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, } from '@/components/ui/dropdown-menu'
-import ModeToggle from './ModeToggle.vue';
+import ModeToggle from '@/components/common/ModeToggle.vue';
+import SidebarTrigger from '@/components/ui/sidebar/SidebarTrigger.vue';
 </script>
 
 <template>
     <nav class="p-4 flex items-center justify-between">
         <!-- Left side -->
-        <div>
-            collapse Button
-        </div>
+        <SidebarTrigger />
 
         <!-- Right side -->
         <div class="flex items-center gap-4">

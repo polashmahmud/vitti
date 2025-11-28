@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { Calendar, Home, Inbox, Search } from 'lucide-vue-next';
-import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInset, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarRail, SidebarTrigger, } from '@/components/ui/sidebar'
-
+import { Calendar, ChevronUp, GalleryVerticalEnd, Home, Inbox, Plus, Search, User2 } from 'lucide-vue-next';
+import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInset, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarRail, SidebarTrigger, } from '@/components/ui/sidebar'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, } from '@/components/ui/dropdown-menu'
+import { Separator } from '@/components/ui/separator'
 
 const items = [
     {
@@ -29,9 +30,24 @@ const items = [
 </script>
 
 <template>
-    <Sidebar>
-        <SidebarHeader>
+    <Sidebar collapsible="icon">
+        <SidebarHeader class="py-4">
+            <SidebarMenu>
+                <SidebarMenuItem>
+                    <SidebarMenuButton size="lg">
+                        <div
+                            class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                            <GalleryVerticalEnd class="size-4" />
+                        </div>
+                        <div class="grid flex-1 text-left text-sm leading-tight">
+                            <span class="truncate font-semibold">Acme Inc</span>
+                            <span class="truncate text-xs">Enterprise</span>
+                        </div>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+            </SidebarMenu>
         </SidebarHeader>
+        <Separator />
         <SidebarContent>
             <SidebarGroup>
                 <SidebarGroupLabel>Application</SidebarGroupLabel>
@@ -48,7 +64,32 @@ const items = [
                     </SidebarMenu>
                 </SidebarGroupContent>
             </SidebarGroup>
+
+            <SidebarGroup>
+                <SidebarGroupLabel>Projects</SidebarGroupLabel>
+                <SidebarGroupAction>
+                    <Plus /> <span class="sr-only">Add Project</span>
+                </SidebarGroupAction>
+            </SidebarGroup>
         </SidebarContent>
-        <SidebarFooter></SidebarFooter>
+        <SidebarFooter>
+            <SidebarMenu>
+                <SidebarMenuItem>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <SidebarMenuButton>
+                                <User2 /> John Doe
+                                <ChevronUp class="ml-auto" />
+                            </SidebarMenuButton>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            <DropdownMenuItem>Account</DropdownMenuItem>
+                            <DropdownMenuItem>Setting</DropdownMenuItem>
+                            <DropdownMenuItem>Sign Out</DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </SidebarMenuItem>
+            </SidebarMenu>
+        </SidebarFooter>
     </Sidebar>
 </template>
