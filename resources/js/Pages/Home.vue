@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
 import { Button } from '@/components/ui/button';
+import AppLayout from '@/layouts/AppLayout.vue';
 </script>
 
 <template>
 
     <Head title="Home" />
-    <div class="p-4">
-        <Button variant="destructive">Hello Polash</Button>
-    </div>
+    <AppLayout>
+        Home Page
+    </AppLayout>
 </template>
