@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { Calendar, ChevronUp, GalleryVerticalEnd, Home, Inbox, Plus, Search, User2 } from 'lucide-vue-next';
+import { Calendar, ChevronUp, GalleryVerticalEnd, Home, Inbox, Plus, Projector, Search, User2 } from 'lucide-vue-next';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInset, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarRail, SidebarTrigger, } from '@/components/ui/sidebar'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, } from '@/components/ui/dropdown-menu'
 import { Separator } from '@/components/ui/separator'
@@ -70,6 +70,24 @@ const items = [
                 <SidebarGroupAction>
                     <Plus /> <span class="sr-only">Add Project</span>
                 </SidebarGroupAction>
+                <SidebarGroupContent>
+                    <SidebarMenu>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton asChild>
+                                <Link href="#">
+                                <Projector /> See All Projects
+                                </Link>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton asChild>
+                                <Link href="#">
+                                <Plus /> Create New Project
+                                </Link>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    </SidebarMenu>
+                </SidebarGroupContent>
             </SidebarGroup>
         </SidebarContent>
         <SidebarFooter>
