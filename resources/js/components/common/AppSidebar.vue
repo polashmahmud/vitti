@@ -89,6 +89,31 @@ const items = [
                     </SidebarMenu>
                 </SidebarGroupContent>
             </SidebarGroup>
+
+            <SidebarGroup>
+                <SidebarGroupLabel>Projects</SidebarGroupLabel>
+                <SidebarGroupAction>
+                    <Plus /> <span class="sr-only">Add Project</span>
+                </SidebarGroupAction>
+                <SidebarGroupContent>
+                    <SidebarMenu>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton asChild>
+                                <Link href="#">
+                                <Projector /> See All Projects
+                                </Link>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton asChild>
+                                <Link href="#">
+                                <Plus /> Create New Project
+                                </Link>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    </SidebarMenu>
+                </SidebarGroupContent>
+            </SidebarGroup>
         </SidebarContent>
         <SidebarFooter>
             <SidebarMenu>
