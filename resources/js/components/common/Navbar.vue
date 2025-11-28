@@ -3,6 +3,7 @@ import { Link } from '@inertiajs/vue3';
 import { LogOut, Moon, Settings, User } from 'lucide-vue-next';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, } from '@/components/ui/dropdown-menu'
+import ModeToggle from './ModeToggle.vue';
 </script>
 
 <template>
@@ -15,7 +16,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
         <!-- Right side -->
         <div class="flex items-center gap-4">
             <Link href="/">Home</Link>
-            <Moon />
+            <ModeToggle />
             <DropdownMenu>
                 <DropdownMenuTrigger>
                     <Avatar>
