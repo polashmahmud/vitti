@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { Calendar, ChevronUp, GalleryVerticalEnd, Home, Inbox, Plus, Projector, Search, User2 } from 'lucide-vue-next';
+import { Calendar, ChevronDown, ChevronUp, GalleryVerticalEnd, Home, Inbox, Plus, Projector, Search, User2 } from 'lucide-vue-next';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInset, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarRail, SidebarTrigger, } from '@/components/ui/sidebar'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, } from '@/components/ui/dropdown-menu'
 import { Separator } from '@/components/ui/separator'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger, } from '@/components/ui/collapsible'
 
 const items = [
     {
@@ -31,7 +32,7 @@ const items = [
 
 <template>
     <Sidebar collapsible="icon">
-        <SidebarHeader class="py-4">
+        <SidebarHeader>
             <SidebarMenu>
                 <SidebarMenuItem>
                     <SidebarMenuButton size="lg">
@@ -90,30 +91,37 @@ const items = [
                 </SidebarGroupContent>
             </SidebarGroup>
 
-            <SidebarGroup>
-                <SidebarGroupLabel>Projects</SidebarGroupLabel>
-                <SidebarGroupAction>
-                    <Plus /> <span class="sr-only">Add Project</span>
-                </SidebarGroupAction>
-                <SidebarGroupContent>
-                    <SidebarMenu>
-                        <SidebarMenuItem>
-                            <SidebarMenuButton asChild>
-                                <Link href="#">
-                                <Projector /> See All Projects
-                                </Link>
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
-                        <SidebarMenuItem>
-                            <SidebarMenuButton asChild>
-                                <Link href="#">
-                                <Plus /> Create New Project
-                                </Link>
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
-                    </SidebarMenu>
-                </SidebarGroupContent>
-            </SidebarGroup>
+            <Collapsible>
+                <SidebarGroup>
+                    <SidebarGroupLabel asChild>
+                        <CollapsibleTrigger>
+                            Collapsable Group
+                            <ChevronDown class="ml-auto" />
+                        </CollapsibleTrigger>
+                    </SidebarGroupLabel>
+                    <CollapsibleContent>
+                        <SidebarGroupContent>
+                            <SidebarMenu>
+                                <SidebarMenuItem>
+                                    <SidebarMenuButton asChild>
+                                        <Link href="#">
+                                        <Projector /> See All Projects
+                                        </Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                                <SidebarMenuItem>
+                                    <SidebarMenuButton asChild>
+                                        <Link href="#">
+                                        <Plus /> Create New Project
+                                        </Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            </SidebarMenu>
+                        </SidebarGroupContent>
+                    </CollapsibleContent>
+                </SidebarGroup>
+            </Collapsible>
+
         </SidebarContent>
         <SidebarFooter>
             <SidebarMenu>
