@@ -122,6 +122,29 @@ const items = [
                 </SidebarGroup>
             </Collapsible>
 
+            <!-- Nested Sidebar Example -->
+            <SidebarGroup>
+                <SidebarGroupLabel>Nested</SidebarGroupLabel>
+                <SidebarGroupContent>
+                    <SidebarMenu>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton asChild>
+                                <Link href="#">
+                                <Projector /> See All Projects
+                                </Link>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton asChild>
+                                <Link href="#">
+                                <Plus /> Create New Project
+                                </Link>
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    </SidebarMenu>
+                </SidebarGroupContent>
+            </SidebarGroup>
+
         </SidebarContent>
         <SidebarFooter>
             <SidebarMenu>
