@@ -33,12 +33,21 @@ const hasChildren = computed(() => {
 });
 
 const isSubItem = computed(() => (props.level || 0) > 0);
+
+const isItemActive = (item: NavItem): boolean => {
+    if (urlIsActive(item.href, page.url)) return true;
+    return item.items?.some(child => isItemActive(child)) ?? false;
+};
+
+const shouldExpand = computed(() => {
+    return props.item.items?.some(child => isItemActive(child));
+});
 </script>
 
 <template>
     <SidebarMenuItem v-if="!isSubItem">
         <template v-if="hasChildren">
-            <Collapsible class="group/collapsible" :default-open="item.isActive">
+            <Collapsible class="group/collapsible" :default-open="shouldExpand">
                 <CollapsibleTrigger as-child>
                     <SidebarMenuButton :tooltip="item.title">
                         <component :is="item.icon" v-if="item.icon" />
@@ -67,7 +76,7 @@ const isSubItem = computed(() => (props.level || 0) > 0);
 
     <SidebarMenuSubItem v-else>
         <template v-if="hasChildren">
-            <Collapsible class="group/collapsible" :default-open="item.isActive">
+            <Collapsible class="group/collapsible" :default-open="shouldExpand">
                 <CollapsibleTrigger as-child>
                     <SidebarMenuSubButton>
                         <component :is="item.icon" v-if="item.icon" />
