@@ -2,6 +2,7 @@
 
 namespace Modules\MenuManagement\Providers;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class MenuManagementProvider extends ServiceProvider
@@ -20,6 +21,9 @@ class MenuManagementProvider extends ServiceProvider
     public function boot(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config.php', 'menumanagement');
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+
+        // Load routes with web middleware group
+        Route::middleware('web')
+            ->group(__DIR__ . '/../routes/web.php');
     }
 }

@@ -16,26 +16,20 @@ createInertiaApp({
         if (name.includes('::')) {
             const [module, page] = name.split('::');
 
-            const modulePages = import.meta.glob<DefineComponent>('../../modules/**/resources/pages/**/*.vue', { eager: false });
+            const modulePages = import.meta.glob<DefineComponent>('../../modules/**/resources/pages/**/*.vue');
 
             const path = `../../modules/${module}/resources/pages/${page}.vue`;
 
-            console.log('Trying to resolve:', path);
-            console.log('Available paths:', Object.keys(modulePages));
-
             if (path in modulePages) {
-                return modulePages[path]().then((m) => m.default);
+                return modulePages[path]().then((m) => m.default || m);
             }
-            console.error(`Module page not found: ${path}`);
         }
 
         return resolvePageComponent(
             `./pages/${name}.vue`,
             import.meta.glob<DefineComponent>('./pages/**/*.vue'),
         );
-    },
-
-    setup({ el, App, props, plugin }) {
+    }, setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
             .mount(el);
