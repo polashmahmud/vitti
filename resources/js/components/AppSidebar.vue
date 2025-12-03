@@ -6,7 +6,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, Sid
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, Folder, LayoutGrid, SquareTerminal } from 'lucide-vue-next';
+import { BookOpen, Folder, LayoutGrid, Menu, SquareTerminal } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 
 const mainNavItems: NavItem[] = [
@@ -64,6 +64,11 @@ const mainNavItems: NavItem[] = [
                 href: '#',
             },
         ],
+    },
+    {
+        title: 'Menu Management',
+        href: '/menu-management',
+        icon: Menu,
     },
 ];
 
