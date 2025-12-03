@@ -14,24 +14,24 @@ const mainNavItems: NavItem[] = [
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+        isActive: true,
     },
     {
-        title: "Playground",
-        href: "#",
+        title: 'Projects',
+        href: '#',
         icon: SquareTerminal,
-        isActive: true,
         items: [
             {
-                title: "History",
-                href: "#",
+                title: 'All Projects',
+                href: '#',
             },
             {
-                title: "Starred",
-                href: "#",
+                title: 'Active',
+                href: '#',
             },
             {
-                title: "Settings",
-                href: "#",
+                title: 'Archived',
+                href: '#',
             },
         ],
     },
