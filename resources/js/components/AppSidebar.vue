@@ -9,7 +9,7 @@ import { Link, usePage } from '@inertiajs/vue3';
 import { BookOpen, Folder } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 import { computed } from 'vue';
-import * as LucideIcons from 'lucide-vue-next';
+import { iconMap } from '@/iconMap';
 
 const page = usePage();
 
@@ -23,7 +23,7 @@ const mainNavItems = computed(() => {
 function convertMenuIcons(menu: any): any {
     const result: any = {
         ...menu,
-        icon: menu.icon ? (LucideIcons as any)[menu.icon] : undefined,
+        icon: menu.icon ? iconMap[menu.icon] : undefined,
     };
 
     // Recursively convert nested items
