@@ -26,7 +26,7 @@ interface Menu {
 }
 
 interface Props {
-    menus: Menu[];
+    menuList: Menu[];
 }
 
 const props = defineProps<Props>();
@@ -65,7 +65,7 @@ const allMenus = computed(() => {
             return acc;
         }, []);
     };
-    return flattenMenus(props.menus);
+    return flattenMenus(props.menuList);
 });
 
 const openCreateDialog = () => {

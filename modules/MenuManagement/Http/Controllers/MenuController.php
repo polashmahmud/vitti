@@ -22,7 +22,7 @@ class MenuController extends Controller
             });
 
         return Inertia::render('MenuManagement::Index', [
-            'menus' => $menus,
+            'menuList' => $menus,
         ]);
     }
 

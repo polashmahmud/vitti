@@ -5,72 +5,34 @@ import NavUser from '@/components/NavUser.vue';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
-import { Link } from '@inertiajs/vue3';
-import { BookOpen, Folder, LayoutGrid, Menu, SquareTerminal } from 'lucide-vue-next';
+import { Link, usePage } from '@inertiajs/vue3';
+import { BookOpen, Folder } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
+import { computed } from 'vue';
+import * as LucideIcons from 'lucide-vue-next';
 
-const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-        isActive: true,
-    },
-    {
-        title: 'Projects',
-        href: '#',
-        icon: SquareTerminal,
-        items: [
-            {
-                title: 'All Projects',
-                href: '#',
-            },
-            {
-                title: 'Development',
-                href: '#',
-                items: [
-                    {
-                        title: 'Frontend',
-                        href: '#',
-                        items: [
-                            {
-                                title: 'React',
-                                href: '#',
-                            },
-                            {
-                                title: 'Vue',
-                                href: '#',
-                            },
-                        ],
-                    },
-                    {
-                        title: 'Backend',
-                        href: '#',
-                        items: [
-                            {
-                                title: 'Laravel',
-                                href: '#',
-                            },
-                            {
-                                title: 'Node.js',
-                                href: '#',
-                            },
-                        ],
-                    },
-                ],
-            },
-            {
-                title: 'Archived',
-                href: '#',
-            },
-        ],
-    },
-    {
-        title: 'Menu Management',
-        href: '/menu-management',
-        icon: Menu,
-    },
-];
+const page = usePage();
+
+// Get menus from Inertia shared data
+const mainNavItems = computed(() => {
+    const menus = page.props.menus as any[] || [];
+    return menus.map(menu => convertMenuIcons(menu));
+});
+
+// Helper function to recursively convert icon strings to components
+function convertMenuIcons(menu: any): any {
+    const result: any = {
+        ...menu,
+        icon: menu.icon ? (LucideIcons as any)[menu.icon] : undefined,
+    };
+
+    // Recursively convert nested items
+    if (menu.items && Array.isArray(menu.items) && menu.items.length > 0) {
+        result.items = menu.items.map((child: any) => convertMenuIcons(child));
+    }
+
+    return result;
+}
 
 const footerNavItems: NavItem[] = [
     {
