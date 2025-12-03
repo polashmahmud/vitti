@@ -26,8 +26,38 @@ const mainNavItems: NavItem[] = [
                 href: '#',
             },
             {
-                title: 'Active',
+                title: 'Development',
                 href: '#',
+                items: [
+                    {
+                        title: 'Frontend',
+                        href: '#',
+                        items: [
+                            {
+                                title: 'React',
+                                href: '#',
+                            },
+                            {
+                                title: 'Vue',
+                                href: '#',
+                            },
+                        ],
+                    },
+                    {
+                        title: 'Backend',
+                        href: '#',
+                        items: [
+                            {
+                                title: 'Laravel',
+                                href: '#',
+                            },
+                            {
+                                title: 'Node.js',
+                                href: '#',
+                            },
+                        ],
+                    },
+                ],
             },
             {
                 title: 'Archived',
