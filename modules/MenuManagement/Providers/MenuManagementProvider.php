@@ -22,6 +22,9 @@ class MenuManagementProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config.php', 'menumanagement');
 
+        // Load migrations
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
         // Load routes with web middleware group
         Route::middleware('web')
             ->group(__DIR__ . '/../routes/web.php');
