@@ -10,6 +10,10 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: dashboard().url,
     },
 ];
+
+const props = defineProps({
+    users: Object
+})
 </script>
 
 <template>
@@ -17,6 +21,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <Head title="Dashboard" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
+        {{ users }}
         <div class="p-4">Data Table</div>
     </AppLayout>
 </template>
