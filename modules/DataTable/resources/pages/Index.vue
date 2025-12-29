@@ -21,7 +21,6 @@ const props = defineProps({
     <Head title="Dashboard" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
-        {{ users }}
         <div class="p-4">Data Table</div>
     </AppLayout>
 </template>
